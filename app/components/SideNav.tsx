@@ -19,6 +19,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import WorkIcon from "@mui/icons-material/Work";
 import MessageIcon from "@mui/icons-material/Message";
 import { theme } from "../theme/theme";
+import Link from "next/link";
 const SideNav = () => {
   return (
     <Drawer
@@ -33,14 +34,21 @@ const SideNav = () => {
     >
       <Box width={"256px"} textAlign={"center"}>
         <Stack spacing={4}>
-          <Button endIcon={<WorkIcon />}>
-            <Typography variant="h5">Jobs</Typography>
-          </Button>
-          <Button endIcon={<PersonIcon />}>
-            <Typography variant="h5">Employees</Typography>
-          </Button>
+          <Link href={"/all-jobs"}>
+            <Button endIcon={<WorkIcon />}>
+              <Typography variant="h5">Jobs</Typography>
+            </Button>
+          </Link>
+          <Link href={"/employees"}>
+            <Button endIcon={<PersonIcon />}>
+              <Typography variant="h5">Employees</Typography>
+            </Button>
+          </Link>
           <Button endIcon={<MessageIcon />}>
             <Typography variant="h5">Messages</Typography>
+          </Button>
+          <Button endIcon={<MessageIcon />}>
+            <Typography variant="h5">Invoices</Typography>
           </Button>
         </Stack>
       </Box>
