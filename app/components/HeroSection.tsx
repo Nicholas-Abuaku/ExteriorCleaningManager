@@ -4,7 +4,7 @@ import Link from "next/link";
 const HeroSection = () => {
   return (
     <Box sx={{ display: "flex", justifyContent: "center", marginTop: "150px" }}>
-      <Box sx={{ width: "23.4375vw", height: "26.968716289104638vh" }}>
+      <Box sx={{ width: "23.4375vw" }}>
         <Typography variant="h1">
           Streamline Your Exterior Cleaning Business
         </Typography>
@@ -17,7 +17,7 @@ const HeroSection = () => {
           you organize your business, boost efficiency, and impress your clients
         </Typography>
         <Stack direction={"row"} spacing={2} sx={{ display: "inline-block" }}>
-          <Link href="/admin">
+          <Link href="/all-jobs">
             <Button variant="contained" sx={{ backgroundColor: "#FB610A" }}>
               Demo
             </Button>
