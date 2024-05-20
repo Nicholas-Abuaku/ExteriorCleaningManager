@@ -4,7 +4,7 @@ import Link from "next/link";
 const HeroSection = () => {
   return (
     <Box sx={{ display: "flex", justifyContent: "center", marginTop: "150px" }}>
-      <Box sx={{ width: "450px", height: "258px" }}>
+      <Box sx={{ width: "23.4375vw", height: "26.968716289104638vh" }}>
         <Typography variant="h1">
           Streamline Your Exterior Cleaning Business
         </Typography>
