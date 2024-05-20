@@ -15,6 +15,10 @@ export let theme = createTheme({
       fontSize: "64px",
       color: "white",
     },
+    h3: {
+      fontFamily: montserrat.style.fontFamily,
+      color: "white",
+    },
     button: {
       fontFamily: montserrat.style.fontFamily,
       fontWeight: "bold",
@@ -26,6 +30,10 @@ export let theme = createTheme({
     },
     h5: {
       fontFamily: montserrat.style.fontFamily,
+    },
+    h6: {
+      fontFamily: montserrat.style.fontFamily,
+      color: "white",
     },
   },
 });
