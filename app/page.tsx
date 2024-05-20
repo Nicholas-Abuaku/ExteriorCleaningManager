@@ -22,7 +22,7 @@ export default function Home() {
             marginTop: "120px",
           }}
         >
-          <Grid item xs={12}>
+          <Grid item xs={12} md={12}>
             <HeroSection />
           </Grid>
         </Grid>
