@@ -21,7 +21,7 @@ export let theme = createTheme({
     },
     button: {
       fontFamily: montserrat.style.fontFamily,
-      fontWeight: "bold",
+      fontWeight: "initial",
       fontSize: "23px",
     },
     body1: {
