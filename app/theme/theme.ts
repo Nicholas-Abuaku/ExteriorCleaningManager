@@ -18,10 +18,14 @@ export const theme = createTheme({
     button: {
       fontFamily: montserrat.style.fontFamily,
       fontWeight: "bold",
+      fontSize: "23px",
     },
     body1: {
       fontFamily: montserrat.style.fontFamily,
       color: "white",
+    },
+    h5: {
+      fontFamily: montserrat.style.fontFamily,
     },
   },
 });
