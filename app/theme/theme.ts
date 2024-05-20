@@ -1,5 +1,5 @@
 import { Montserrat } from "next/font/google";
-import { createTheme } from "@mui/material/styles";
+import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 
 const montserrat = Montserrat({
   weight: ["300", "700", "400"],
@@ -7,7 +7,7 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
-export const theme = createTheme({
+export let theme = createTheme({
   typography: {
     h1: {
       fontFamily: montserrat.style.fontFamily,
@@ -29,3 +29,5 @@ export const theme = createTheme({
     },
   },
 });
+
+theme = responsiveFontSizes(theme);
