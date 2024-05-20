@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import { theme } from "./theme/theme";
 import HeroSection from "./components/HeroSection";
+import HomePageFeatures from "./components/HomePageFeatures";
 export default function Home() {
   return (
     <main>
@@ -19,12 +20,15 @@ export default function Home() {
           sx={{
             justifyContent: "center",
             alignItems: "center",
-            marginTop: "120px",
+            marginTop: "auto",
           }}
         >
-          <Grid item xs={12} md={12}>
+          <Grid item xs={12} md={12} marginBottom={20}>
             <HeroSection />
           </Grid>
+        </Grid>
+        <Grid item xs={12}>
+          <HomePageFeatures />
         </Grid>
       </ThemeProvider>
     </main>
