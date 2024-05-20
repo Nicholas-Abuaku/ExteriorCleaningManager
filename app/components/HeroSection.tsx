@@ -1,6 +1,6 @@
 import { Box, Typography, Stack, Button } from "@mui/material";
 import React from "react";
-
+import Link from "next/link";
 const HeroSection = () => {
   return (
     <Box sx={{ display: "flex", justifyContent: "center", marginTop: "150px" }}>
@@ -17,9 +17,11 @@ const HeroSection = () => {
           you organize your business, boost efficiency, and impress your clients
         </Typography>
         <Stack direction={"row"} spacing={2} sx={{ display: "inline-block" }}>
-          <Button variant="contained" sx={{ backgroundColor: "#FB610A" }}>
-            Demo
-          </Button>
+          <Link href="/admin">
+            <Button variant="contained" sx={{ backgroundColor: "#FB610A" }}>
+              Demo
+            </Button>
+          </Link>
           <Button variant="contained" sx={{ backgroundColor: "#FB610A" }}>
             Pricing
           </Button>
