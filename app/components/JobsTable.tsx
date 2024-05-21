@@ -8,9 +8,35 @@ import Paper from "@mui/material/Paper";
 import Chip from "@mui/material/Chip";
 import AdminBreadcrumbs from "./AdminBreadcrumbs";
 import ArrowDropDownCircleIcon from "@mui/icons-material/ArrowDropDownCircle";
-import { IconButton } from "@mui/material";
+import { Badge, IconButton } from "@mui/material";
+import TableActions from "./TableActions";
 
 const JobsTable = () => {
+  const d = new Date();
+  const allJobs = [
+    {
+      id: 1,
+      surname: "Banga",
+      email: "djBanga@gmail.com",
+      postcode: "SL2 2YG",
+      house_no: "13",
+      services: "Ext Window",
+      due: d.toLocaleDateString(),
+      assigned_to: "jeevan",
+      status: "Pending",
+    },
+    {
+      id: 2,
+      surname: "Wheatley",
+      email: "ampx15@gmail.com",
+      postcode: "SL2 2GY",
+      house_no: "4",
+      services: "Gutter clean",
+      due: d.toLocaleDateString(),
+      assigned_to: "Carl",
+      status: "Pending",
+    },
+  ];
   return (
     <>
       <AdminBreadcrumbs />
@@ -31,194 +57,23 @@ const JobsTable = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            <TableRow>
-              <TableCell>1</TableCell>
-              <TableCell>Abuaku</TableCell>
-              <TableCell>abuaku1400@gmail.com</TableCell>
-              <TableCell>SL2 2AQ</TableCell>
-              <TableCell>28</TableCell>
-              <TableCell>Window</TableCell>
-              <TableCell>21/05/2024</TableCell>
-              <TableCell>Jeevan</TableCell>
-              <TableCell>
-                <Chip label="Completed" color="success" />
-              </TableCell>
-              <TableCell>
-                <IconButton>
-                  <ArrowDropDownCircleIcon />
-                </IconButton>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>1</TableCell>
-              <TableCell>Abuaku</TableCell>
-              <TableCell>abuaku1400@gmail.com</TableCell>
-              <TableCell>SL2 2AQ</TableCell>
-              <TableCell>28</TableCell>
-              <TableCell>Window</TableCell>
-              <TableCell>21/05/2024</TableCell>
-              <TableCell>Jeevan</TableCell>
-              <TableCell>
-                {" "}
-                <Chip label="Pending" color="warning" />
-              </TableCell>
-              <TableCell>
-                <IconButton>
-                  <ArrowDropDownCircleIcon />
-                </IconButton>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>1</TableCell>
-              <TableCell>Abuaku</TableCell>
-              <TableCell>abuaku1400@gmail.com</TableCell>
-              <TableCell>SL2 2AQ</TableCell>
-              <TableCell>28</TableCell>
-              <TableCell>Window</TableCell>
-              <TableCell>21/05/2024</TableCell>
-              <TableCell>Jeevan</TableCell>
-              <TableCell>
-                <Chip label="Cancelled" color="error" />
-              </TableCell>
-              <TableCell>
-                <IconButton>
-                  <ArrowDropDownCircleIcon />
-                </IconButton>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>1</TableCell>
-              <TableCell>Abuaku</TableCell>
-              <TableCell>abuaku1400@gmail.com</TableCell>
-              <TableCell>SL2 2AQ</TableCell>
-              <TableCell>28</TableCell>
-              <TableCell>Window</TableCell>
-              <TableCell>21/05/2024</TableCell>
-              <TableCell>Jeevan</TableCell>
-              <TableCell>
-                {" "}
-                <Chip label="Pending" color="warning" />
-              </TableCell>
-              <TableCell>
-                <IconButton>
-                  <ArrowDropDownCircleIcon />
-                </IconButton>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>1</TableCell>
-              <TableCell>Abuaku</TableCell>
-              <TableCell>abuaku1400@gmail.com</TableCell>
-              <TableCell>SL2 2AQ</TableCell>
-              <TableCell>28</TableCell>
-              <TableCell>Window</TableCell>
-              <TableCell>21/05/2024</TableCell>
-              <TableCell>Jeevan</TableCell>
-              <TableCell>
-                {" "}
-                <Chip label="Pending" color="warning" />
-              </TableCell>
-              <TableCell>
-                <IconButton>
-                  <ArrowDropDownCircleIcon />
-                </IconButton>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>1</TableCell>
-              <TableCell>Abuaku</TableCell>
-              <TableCell>abuaku1400@gmail.com</TableCell>
-              <TableCell>SL2 2AQ</TableCell>
-              <TableCell>28</TableCell>
-              <TableCell>Window</TableCell>
-              <TableCell>21/05/2024</TableCell>
-              <TableCell>Jeevan</TableCell>
-              <TableCell>
-                {" "}
-                <Chip label="Pending" color="warning" />
-              </TableCell>
-              <TableCell>
-                <IconButton>
-                  <ArrowDropDownCircleIcon />
-                </IconButton>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>1</TableCell>
-              <TableCell>Abuaku</TableCell>
-              <TableCell>abuaku1400@gmail.com</TableCell>
-              <TableCell>SL2 2AQ</TableCell>
-              <TableCell>28</TableCell>
-              <TableCell>Window</TableCell>
-              <TableCell>21/05/2024</TableCell>
-              <TableCell>Jeevan</TableCell>
-              <TableCell>
-                {" "}
-                <Chip label="Pending" color="warning" />
-              </TableCell>
-              <TableCell>
-                <IconButton>
-                  <ArrowDropDownCircleIcon />
-                </IconButton>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>1</TableCell>
-              <TableCell>Abuaku</TableCell>
-              <TableCell>abuaku1400@gmail.com</TableCell>
-              <TableCell>SL2 2AQ</TableCell>
-              <TableCell>28</TableCell>
-              <TableCell>Window</TableCell>
-              <TableCell>21/05/2024</TableCell>
-              <TableCell>Jeevan</TableCell>
-              <TableCell>
-                {" "}
-                <Chip label="Pending" color="warning" />
-              </TableCell>
-              <TableCell>
-                <IconButton>
-                  <ArrowDropDownCircleIcon />
-                </IconButton>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>1</TableCell>
-              <TableCell>Abuaku</TableCell>
-              <TableCell>abuaku1400@gmail.com</TableCell>
-              <TableCell>SL2 2AQ</TableCell>
-              <TableCell>28</TableCell>
-              <TableCell>Window</TableCell>
-              <TableCell>21/05/2024</TableCell>
-              <TableCell>Jeevan</TableCell>
-              <TableCell>
-                {" "}
-                <Chip label="Pending" color="warning" />
-              </TableCell>
-              <TableCell>
-                <IconButton>
-                  <ArrowDropDownCircleIcon />
-                </IconButton>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>1</TableCell>
-              <TableCell>Abuaku</TableCell>
-              <TableCell>abuaku1400@gmail.com</TableCell>
-              <TableCell>SL2 2AQ</TableCell>
-              <TableCell>28</TableCell>
-              <TableCell>Window</TableCell>
-              <TableCell>21/05/2024</TableCell>
-              <TableCell>Jeevan</TableCell>
-              <TableCell>
-                {" "}
-                <Chip label="Pending" color="warning" />
-              </TableCell>
-              <TableCell>
-                <IconButton>
-                  <ArrowDropDownCircleIcon />
-                </IconButton>
-              </TableCell>
-            </TableRow>
+            {allJobs.map((job) => {
+              return (
+                <TableRow>
+                  <TableCell>{job.id}</TableCell>
+                  <TableCell>{job.surname}</TableCell>
+                  <TableCell>{job.email}</TableCell>
+                  <TableCell>{job.postcode}</TableCell>
+                  <TableCell>{job.house_no}</TableCell>
+                  <TableCell>{job.services}</TableCell>
+                  <TableCell>{job.due.toString()}</TableCell>
+                  <TableCell>{job.assigned_to}</TableCell>
+                  <TableCell>
+                    {<Chip label={job.status} color="warning" />}
+                  </TableCell>
+                </TableRow>
+              );
+            })}
           </TableBody>
         </Table>
       </TableContainer>
