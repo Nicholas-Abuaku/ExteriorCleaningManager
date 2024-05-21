@@ -78,6 +78,37 @@ const EmployeeTable = () => {
         },
       ],
     },
+    {
+      id: 3,
+      firstname: "Barack",
+      surname: "Obama",
+      email: "droneStrikesRUs@gmail.com",
+      mobile_no: "07735645287",
+      jobs: [
+        {
+          job_id: 5,
+          surname: "Lucci",
+          email: "RobertLucci@gmail.com",
+          postcode: "SL2 2AQ",
+          services: "Ext Window",
+          house_no: "28",
+          due: "21/05/2024",
+          mobile_no: "07760135389",
+          status: "pending",
+        },
+        {
+          job_id: 6,
+          surname: "Lucci",
+          email: "RobertLucci@gmail.com",
+          postcode: "SL2 2AQ",
+          services: "Ext Window",
+          house_no: "28",
+          due: "21/05/2024",
+          mobile_no: "07760135389",
+          status: "pending",
+        },
+      ],
+    },
   ];
   return (
     <>

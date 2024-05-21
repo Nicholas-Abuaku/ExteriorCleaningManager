@@ -16,24 +16,112 @@ const JobsTable = () => {
   const allJobs = [
     {
       id: 1,
-      surname: "Banga",
-      email: "djBanga@gmail.com",
+      client_surname: "Lucci",
+      client_email: "RobertoLucci@gmail.com",
       postcode: "SL2 2YG",
       house_no: "13",
       services: "Ext Window",
       due: d.toLocaleDateString(),
-      assigned_to: "jeevan",
+      assigned_to: "Jeevan",
       status: "Pending",
     },
     {
       id: 2,
-      surname: "Wheatley",
-      email: "ampx15@gmail.com",
-      postcode: "SL2 2GY",
+      client_surname: "Flanagan",
+      client_email: "FraserFlan@gmail.com",
+      postcode: "SL2 2GG",
       house_no: "4",
       services: "Gutter clean",
       due: d.toLocaleDateString(),
       assigned_to: "Carl",
+      status: "Pending",
+    },
+    {
+      id: 3,
+      client_surname: "Smith",
+      client_email: "BoringName@gmail.com",
+      postcode: "SL3 3UJ",
+      house_no: "210",
+      services: "Gutter clean",
+      due: d.toLocaleDateString(),
+      assigned_to: "Fraser",
+      status: "Pending",
+    },
+    {
+      id: 4,
+      client_surname: "Jones",
+      client_email: "BoringNameJones@gmail.com",
+      postcode: "SL3 3UW",
+      house_no: "210",
+      services: "Gutter Repair",
+      due: d.toLocaleDateString(),
+      assigned_to: "Fraser",
+      status: "Pending",
+    },
+    {
+      id: 5,
+      client_surname: "Singh",
+      client_email: "HarpreetSingh@gmail.com",
+      postcode: "SL1 1UD",
+      house_no: "210",
+      services: "Gutter clean",
+      due: d.toLocaleDateString(),
+      assigned_to: "Fraser",
+      status: "Pending",
+    },
+    {
+      id: 6,
+      client_surname: "Abbas",
+      client_email: "AliAbbas@gmail.com",
+      postcode: "SL1 1UD",
+      house_no: "210",
+      services: "Gutter clean",
+      due: d.toLocaleDateString(),
+      assigned_to: "Fraser",
+      status: "Pending",
+    },
+    {
+      id: 7,
+      client_surname: "Mirza",
+      client_email: "HaseebMirza@gmail.com",
+      postcode: "SL1 1UD",
+      house_no: "210",
+      services: "Gutter clean",
+      due: d.toLocaleDateString(),
+      assigned_to: "Fraser",
+      status: "Pending",
+    },
+    {
+      id: 8,
+      client_surname: "Johnson",
+      client_email: "UmarJohnson@gmail.com",
+      postcode: "SL1 1UD",
+      house_no: "210",
+      services: "Gutter clean",
+      due: d.toLocaleDateString(),
+      assigned_to: "Fraser",
+      status: "Pending",
+    },
+    {
+      id: 9,
+      client_surname: "Jittleyang",
+      client_email: "realMFJittleyang@gmail.com",
+      postcode: "SL1 1UD",
+      house_no: "210",
+      services: "Gutter clean",
+      due: d.toLocaleDateString(),
+      assigned_to: "Fraser",
+      status: "Pending",
+    },
+    {
+      id: 10,
+      client_surname: "Newell",
+      client_email: "GabeN@gmail.com",
+      postcode: "SL1 1UD",
+      house_no: "210",
+      services: "Gutter clean",
+      due: d.toLocaleDateString(),
+      assigned_to: "Fraser",
       status: "Pending",
     },
   ];
@@ -45,8 +133,8 @@ const JobsTable = () => {
           <TableHead>
             <TableRow>
               <TableCell>Job ID</TableCell>
-              <TableCell>Surname</TableCell>
-              <TableCell>Email</TableCell>
+              <TableCell>Client Surname</TableCell>
+              <TableCell>Client Email</TableCell>
               <TableCell>Postcode</TableCell>
               <TableCell>House No.</TableCell>
               <TableCell>Services</TableCell>
@@ -61,8 +149,8 @@ const JobsTable = () => {
               return (
                 <TableRow>
                   <TableCell>{job.id}</TableCell>
-                  <TableCell>{job.surname}</TableCell>
-                  <TableCell>{job.email}</TableCell>
+                  <TableCell>{job.client_surname}</TableCell>
+                  <TableCell>{job.client_email}</TableCell>
                   <TableCell>{job.postcode}</TableCell>
                   <TableCell>{job.house_no}</TableCell>
                   <TableCell>{job.services}</TableCell>
