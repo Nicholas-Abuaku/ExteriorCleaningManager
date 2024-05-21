@@ -1,9 +1,9 @@
 "use client";
 import { Typography, Grid, ThemeProvider, Stack } from "@mui/material";
 import React from "react";
-import SideNav from "../components/SideNav";
-import { theme } from "../theme/theme";
-import EmployeeTable from "../components/EmployeeTable";
+import SideNav from "../../components/SideNav";
+import { theme } from "../../theme/theme";
+import EmployeeTable from "../../components/EmployeeTable";
 
 const employees = () => {
   return (
