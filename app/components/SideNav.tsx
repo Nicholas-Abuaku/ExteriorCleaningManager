@@ -32,26 +32,31 @@ const SideNav = () => {
       variant="permanent"
       anchor="left"
     >
-      <Box width={"256px"} textAlign={"center"}>
-        <Stack spacing={4}>
-          <Link href={"/all-jobs"}>
-            <Button endIcon={<WorkIcon />}>
-              <Typography variant="h5">Jobs</Typography>
+      <ThemeProvider theme={theme}>
+        <Box width={"256px"} textAlign={"center"}>
+          <Stack spacing={4}>
+            <Link href={"/dashboard/all-jobs"}>
+              <Button endIcon={<WorkIcon />}>
+                <Typography variant="h5">Jobs</Typography>
+              </Button>
+            </Link>
+            <Button endIcon={<MessageIcon />}>
+              <Typography variant="h5">Job Requests</Typography>
             </Button>
-          </Link>
-          <Link href={"/employees"}>
-            <Button endIcon={<PersonIcon />}>
-              <Typography variant="h5">Employees</Typography>
+            <Link href={"/dashboard/employees"}>
+              <Button endIcon={<PersonIcon />}>
+                <Typography variant="h5">Employees</Typography>
+              </Button>
+            </Link>
+            <Button endIcon={<MessageIcon />}>
+              <Typography variant="h5">Messages</Typography>
             </Button>
-          </Link>
-          <Button endIcon={<MessageIcon />}>
-            <Typography variant="h5">Messages</Typography>
-          </Button>
-          <Button endIcon={<MessageIcon />}>
-            <Typography variant="h5">Invoices</Typography>
-          </Button>
-        </Stack>
-      </Box>
+            <Button endIcon={<MessageIcon />}>
+              <Typography variant="h5">Invoices</Typography>
+            </Button>
+          </Stack>
+        </Box>
+      </ThemeProvider>
     </Drawer>
   );
 };
