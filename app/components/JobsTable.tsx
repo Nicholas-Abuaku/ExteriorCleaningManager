@@ -71,6 +71,9 @@ const JobsTable = () => {
                   <TableCell>
                     {<Chip label={job.status} color="warning" />}
                   </TableCell>
+                  <TableCell>
+                    <TableActions />
+                  </TableCell>
                 </TableRow>
               );
             })}
