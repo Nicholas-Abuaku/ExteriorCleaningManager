@@ -17,7 +17,7 @@ const HeroSection = () => {
           you organize your business, boost efficiency, and impress your clients
         </Typography>
         <Stack direction={"row"} spacing={2} sx={{ display: "inline-block" }}>
-          <Link href="/all-jobs">
+          <Link href="/dashboard/all-jobs">
             <Button variant="contained" sx={{ backgroundColor: "#FB610A" }}>
               Demo
             </Button>
