@@ -10,6 +10,7 @@ import AdminBreadcrumbs from "./AdminBreadcrumbs";
 import ArrowDropDownCircleIcon from "@mui/icons-material/ArrowDropDownCircle";
 import { Badge, IconButton } from "@mui/material";
 import TableActions from "./TableActions";
+import AssignedToMenu from "./AssignedToMenu";
 
 const JobsTable = () => {
   const d = new Date();
@@ -23,7 +24,7 @@ const JobsTable = () => {
       services: "Ext Window",
       due: d.toLocaleDateString(),
       assigned_to: "Jeevan",
-      status: "Pending",
+      status: "Completed",
     },
     {
       id: 2,
@@ -45,7 +46,7 @@ const JobsTable = () => {
       services: "Gutter clean",
       due: d.toLocaleDateString(),
       assigned_to: "Fraser",
-      status: "Pending",
+      status: "Cancelled",
     },
     {
       id: 4,
@@ -89,7 +90,7 @@ const JobsTable = () => {
       services: "Gutter clean",
       due: d.toLocaleDateString(),
       assigned_to: "Fraser",
-      status: "Pending",
+      status: "Cancelled",
     },
     {
       id: 8,
@@ -100,7 +101,7 @@ const JobsTable = () => {
       services: "Gutter clean",
       due: d.toLocaleDateString(),
       assigned_to: "Fraser",
-      status: "Pending",
+      status: "Completed",
     },
     {
       id: 9,
@@ -155,9 +156,22 @@ const JobsTable = () => {
                   <TableCell>{job.house_no}</TableCell>
                   <TableCell>{job.services}</TableCell>
                   <TableCell>{job.due.toString()}</TableCell>
-                  <TableCell>{job.assigned_to}</TableCell>
                   <TableCell>
-                    {<Chip label={job.status} color="warning" />}
+                    <AssignedToMenu name={job.assigned_to} />
+                  </TableCell>
+                  <TableCell>
+                    {
+                      <Chip
+                        label={job.status}
+                        color={
+                          job.status === "Completed"
+                            ? "success"
+                            : job.status === "Pending"
+                            ? "warning"
+                            : "error"
+                        }
+                      />
+                    }
                   </TableCell>
                   <TableCell>
                     <TableActions />
