@@ -85,7 +85,18 @@ const EmployeeActiveJobs = (props: EmployeeActiveJobsProps) => {
                       <TableCell>{job.due}</TableCell>
                       <TableCell>{job.mobile_no}</TableCell>
                       <TableCell>
-                        {<Chip label={job.status} color="warning" />}
+                        {
+                          <Chip
+                            label={job.status}
+                            color={
+                              job.status === "Completed"
+                                ? "success"
+                                : job.status === "Pending"
+                                ? "warning"
+                                : "error"
+                            }
+                          />
+                        }
                       </TableCell>
                     </TableRow>
                   );
