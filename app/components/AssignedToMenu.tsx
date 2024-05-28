@@ -1,9 +1,47 @@
 import React, { useState } from "react";
-import { Button, Menu, MenuItem } from "@mui/material";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Menu,
+  MenuItem,
+} from "@mui/material";
 
 type AssignedToMenuProps = {
   name: string;
 };
+
+const ConfirmDialog = (props: AssignedToMenuProps) => {
+  const [open, setOpen] = useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  return (
+    <>
+      <Button onClick={handleClickOpen}>{props.name}</Button>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Confirm Employee Change?</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            You are about to re-assign this job to {props.name}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Confirm</Button>
+          <Button onClick={handleClose}>Cancel</Button>
+        </DialogActions>
+      </Dialog>
+    </>
+  );
+};
+
 const AssignedToMenu = (props: AssignedToMenuProps) => {
   const allEmployees = [
     {
@@ -101,6 +139,7 @@ const AssignedToMenu = (props: AssignedToMenuProps) => {
     },
   ];
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [openAlert, setOpenAlert] = useState(false);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -116,8 +155,14 @@ const AssignedToMenu = (props: AssignedToMenuProps) => {
       <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
         {allEmployees.map((employee) => {
           return (
-            <MenuItem onClick={handleClose}>
-              {employee.firstname + " " + employee.surname}
+            <MenuItem
+              onClick={(event) => {
+                event.stopPropagation();
+              }}
+            >
+              <ConfirmDialog
+                name={employee.firstname + " " + employee.surname}
+              />
             </MenuItem>
           );
         })}
