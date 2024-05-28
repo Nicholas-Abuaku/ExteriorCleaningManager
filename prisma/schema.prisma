@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Employee {
+  id                 Int      @id @default(autoincrement())
+  employee_firstname String
+  employee_lastname  String
+  employee_email     String   @unique
+  employee_mobile    String   @unique
+  employee_jobs      Jobs[]   @relation("EmployeeJobs")
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  @@index([employee_firstname, employee_lastname, employee_email])
+}
+
+model Jobs {
+  id               Int      @id @default(autoincrement())
+  emp_id           Int
+  client_firstname String
+  client_surname   String
+  client_email     String   @unique
+  client_postcode  String
+  client_house_num String
+  client_mobile    String   @unique
+  services         Services //(Enum)
+  date_due         DateTime
+  status           Status   @default(PENDING) //(Enum)
+  assigned_to      Employee @relation("EmployeeJobs", fields: [emp_id], references: [id])
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@unique([client_postcode, client_house_num])
+  @@index([emp_id, client_postcode, date_due])
+}
+
+enum Status {
+  COMPLETED
+  PENDING
+  CANCELLED
+}
+
+enum Services {
+  EXT_WINDOW
+  INT_WINDOW
+  GUT_CLEAN
+  GUT_REPAIR
+  FASCIAS
+  SOFFIT
+}
