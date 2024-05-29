@@ -21,23 +21,38 @@ model Employee {
 }
 
 model Jobs {
-  id               Int      @id @default(autoincrement())
+  id               Int           @id @default(autoincrement())
   emp_id           Int
   client_firstname String
   client_surname   String
-  client_email     String   @unique
+  client_email     String        @unique
   client_postcode  String
   client_house_num String
-  client_mobile    String   @unique
-  services         Services //(Enum)
+  client_mobile    String        @unique
+  services         JobServices[]
   date_due         DateTime
-  status           Status   @default(PENDING) //(Enum)
-  assigned_to      Employee @relation("EmployeeJobs", fields: [emp_id], references: [id])
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
+  status           Status        @default(PENDING) //(Enum)
+  assigned_to      Employee      @relation("EmployeeJobs", fields: [emp_id], references: [id])
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
 
   @@unique([client_postcode, client_house_num])
   @@index([emp_id, client_postcode, date_due])
+}
+
+model Service {
+  id   Int           @id @default(autoincrement())
+  name String        @unique
+  jobs JobServices[]
+}
+
+model JobServices {
+  jobId     Int
+  serviceId Int
+  job       Jobs    @relation(fields: [jobId], references: [id])
+  service   Service @relation(fields: [serviceId], references: [id])
+
+  @@id([jobId, serviceId])
 }
 
 enum Status {
@@ -46,11 +61,11 @@ enum Status {
   CANCELLED
 }
 
-enum Services {
-  EXT_WINDOW
-  INT_WINDOW
-  GUT_CLEAN
-  GUT_REPAIR
-  FASCIAS
-  SOFFIT
-}
+// enum Services {
+//   EXT_WINDOW
+//   INT_WINDOW
+//   GUT_CLEAN
+//   GUT_REPAIR
+//   FASCIAS
+//   SOFFIT
+// }
