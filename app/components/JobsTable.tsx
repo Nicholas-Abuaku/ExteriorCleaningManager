@@ -23,6 +23,10 @@ interface Job {
   client_email: string;
   client_postcode: string;
   client_house_num: string;
+  assigned_to: {
+    employee_firstname: string;
+    employee_lastname: string;
+  };
   date_due: Date;
   status: string;
 }
@@ -75,7 +79,14 @@ export function JobsTable() {
                   {/* <TableCell>{job.services}</TableCell> */}
                   <TableCell>{job.date_due.toString()}</TableCell>
                   <TableCell>
-                    <AssignedToMenu name={job.emp_id} />
+                    <AssignedToMenu
+                      employee_id={job.emp_id}
+                      name={
+                        job.assigned_to.employee_firstname +
+                        " " +
+                        job.assigned_to.employee_lastname
+                      }
+                    />
                   </TableCell>
                   <TableCell>
                     {

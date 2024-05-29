@@ -11,10 +11,14 @@ import {
 } from "@mui/material";
 
 type AssignedToMenuProps = {
+  employee_id: string;
+  name: string;
+};
+type ConfirmDialogProps = {
   name: string;
 };
 
-const ConfirmDialog = (props: AssignedToMenuProps) => {
+const ConfirmDialog = (props: ConfirmDialogProps) => {
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => {
     setOpen(true);
