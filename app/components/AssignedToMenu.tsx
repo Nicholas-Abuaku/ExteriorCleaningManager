@@ -156,6 +156,7 @@ const AssignedToMenu = (props: AssignedToMenuProps) => {
         {allEmployees.map((employee) => {
           return (
             <MenuItem
+              key={employee.id}
               onClick={(event) => {
                 event.stopPropagation();
               }}
