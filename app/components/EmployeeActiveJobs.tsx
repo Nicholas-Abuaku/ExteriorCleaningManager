@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-
+"use client";
+import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import {
   Box,
@@ -14,25 +14,51 @@ import {
   TableBody,
   Chip,
 } from "@mui/material";
-
-type Job = {
-  job_id: number;
-  surname: string;
-  email: string;
-  postcode: string;
-  house_no: string;
-  services: string;
-  due: string;
-  mobile_no: string;
+import axios from "axios";
+interface Service {
+  connect: {
+    id: number;
+  };
+}
+interface Job {
+  id: string;
+  client_firstname: string;
+  client_surname: string;
+  client_email: string;
+  client_postcode: string;
+  client_house_num: string;
+  client_mobile: string;
+  date_due: string;
+  services: {
+    create: Service[];
+  };
   status: string;
-};
+}
 type EmployeeActiveJobsProps = {
-  jobs: Job[];
+  emp_id: string;
 };
 const EmployeeActiveJobs = (props: EmployeeActiveJobsProps) => {
+  const emp_id = props.emp_id;
+  const [jobs, setJobs] = useState([]);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const fetchEmployeeJobs = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:3000/api/employees/" + emp_id + "/jobs"
+      );
+      console.log(response.data);
+      setJobs(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchEmployeeJobs();
+  }, []);
   return (
     <>
       <Button onClick={handleOpen}>View Active Jobs</Button>
@@ -73,17 +99,17 @@ const EmployeeActiveJobs = (props: EmployeeActiveJobsProps) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {props.jobs.map((job) => {
+                {jobs.map((job: Job) => {
                   return (
-                    <TableRow>
-                      <TableCell>{job.job_id}</TableCell>
-                      <TableCell>{job.surname}</TableCell>
-                      <TableCell>{job.email}</TableCell>
-                      <TableCell>{job.postcode}</TableCell>
-                      <TableCell>{job.house_no}</TableCell>
-                      <TableCell>{job.services}</TableCell>
-                      <TableCell>{job.due}</TableCell>
-                      <TableCell>{job.mobile_no}</TableCell>
+                    <TableRow key={job.id}>
+                      <TableCell>{job.id}</TableCell>
+                      <TableCell>{job.client_surname}</TableCell>
+                      <TableCell>{job.client_email}</TableCell>
+                      <TableCell>{job.client_postcode}</TableCell>
+                      <TableCell>{job.client_house_num}</TableCell>
+                      {/* <TableCell>{job.services}</TableCell> */}
+                      <TableCell>{job.date_due}</TableCell>
+                      <TableCell>{job.client_mobile}</TableCell>
                       <TableCell>
                         {
                           <Chip
