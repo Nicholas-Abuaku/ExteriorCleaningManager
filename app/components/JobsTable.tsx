@@ -1,3 +1,4 @@
+"use client";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -11,121 +12,38 @@ import ArrowDropDownCircleIcon from "@mui/icons-material/ArrowDropDownCircle";
 import { Badge, IconButton } from "@mui/material";
 import TableActions from "./TableActions";
 import AssignedToMenu from "./AssignedToMenu";
+import AllJobs from "../dashboard/all-jobs/page";
+import axios from "axios";
+import { get } from "http";
+import { useEffect, useState } from "react";
+interface Job {
+  id: string;
+  emp_id: string;
+  client_surname: string;
+  client_email: string;
+  client_postcode: string;
+  client_house_num: string;
+  date_due: Date;
+  status: string;
+}
 
-const JobsTable = () => {
+export function JobsTable() {
   const d = new Date();
-  const allJobs = [
-    {
-      id: 1,
-      client_surname: "Lucci",
-      client_email: "RobertoLucci@gmail.com",
-      postcode: "SL2 2YG",
-      house_no: "13",
-      services: "Ext Window",
-      due: d.toLocaleDateString(),
-      assigned_to: "Jeevan",
-      status: "Completed",
-    },
-    {
-      id: 2,
-      client_surname: "Flanagan",
-      client_email: "FraserFlan@gmail.com",
-      postcode: "SL2 2GG",
-      house_no: "4",
-      services: "Gutter clean",
-      due: d.toLocaleDateString(),
-      assigned_to: "Carl",
-      status: "Pending",
-    },
-    {
-      id: 3,
-      client_surname: "Smith",
-      client_email: "BoringName@gmail.com",
-      postcode: "SL3 3UJ",
-      house_no: "210",
-      services: "Gutter clean",
-      due: d.toLocaleDateString(),
-      assigned_to: "Fraser",
-      status: "Cancelled",
-    },
-    {
-      id: 4,
-      client_surname: "Jones",
-      client_email: "BoringNameJones@gmail.com",
-      postcode: "SL3 3UW",
-      house_no: "210",
-      services: "Gutter Repair",
-      due: d.toLocaleDateString(),
-      assigned_to: "Fraser",
-      status: "Pending",
-    },
-    {
-      id: 5,
-      client_surname: "Singh",
-      client_email: "HarpreetSingh@gmail.com",
-      postcode: "SL1 1UD",
-      house_no: "210",
-      services: "Gutter clean",
-      due: d.toLocaleDateString(),
-      assigned_to: "Fraser",
-      status: "Pending",
-    },
-    {
-      id: 6,
-      client_surname: "Abbas",
-      client_email: "AliAbbas@gmail.com",
-      postcode: "SL1 1UD",
-      house_no: "210",
-      services: "Gutter clean",
-      due: d.toLocaleDateString(),
-      assigned_to: "Fraser",
-      status: "Pending",
-    },
-    {
-      id: 7,
-      client_surname: "Mirza",
-      client_email: "HaseebMirza@gmail.com",
-      postcode: "SL1 1UD",
-      house_no: "210",
-      services: "Gutter clean",
-      due: d.toLocaleDateString(),
-      assigned_to: "Fraser",
-      status: "Cancelled",
-    },
-    {
-      id: 8,
-      client_surname: "Johnson",
-      client_email: "UmarJohnson@gmail.com",
-      postcode: "SL1 1UD",
-      house_no: "210",
-      services: "Gutter clean",
-      due: d.toLocaleDateString(),
-      assigned_to: "Fraser",
-      status: "Completed",
-    },
-    {
-      id: 9,
-      client_surname: "Jittleyang",
-      client_email: "realMFJittleyang@gmail.com",
-      postcode: "SL1 1UD",
-      house_no: "210",
-      services: "Gutter clean",
-      due: d.toLocaleDateString(),
-      assigned_to: "Fraser",
-      status: "Pending",
-    },
-    {
-      id: 10,
-      client_surname: "Newell",
-      client_email: "GabeN@gmail.com",
-      postcode: "SL1 1UD",
-      house_no: "210",
-      services: "Gutter clean",
-      due: d.toLocaleDateString(),
-      assigned_to: "Fraser",
-      status: "Pending",
-    },
-  ];
+  const [allJobs, setAllJobs] = useState([]);
+
+  const fetchJobs = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/api/jobs");
+      console.log(response);
+      setAllJobs(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchJobs();
+  }, []);
   return (
     <>
       <AdminBreadcrumbs />
@@ -138,7 +56,7 @@ const JobsTable = () => {
               <TableCell>Client Email</TableCell>
               <TableCell>Postcode</TableCell>
               <TableCell>House No.</TableCell>
-              <TableCell>Services</TableCell>
+              {/* <TableCell>Services</TableCell> */}
               <TableCell>Due</TableCell>
               <TableCell>Assigned to</TableCell>
               <TableCell>Status</TableCell>
@@ -146,27 +64,27 @@ const JobsTable = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {allJobs.map((job) => {
+            {allJobs.map((job: Job) => {
               return (
-                <TableRow>
+                <TableRow key={job.id}>
                   <TableCell>{job.id}</TableCell>
                   <TableCell>{job.client_surname}</TableCell>
                   <TableCell>{job.client_email}</TableCell>
-                  <TableCell>{job.postcode}</TableCell>
-                  <TableCell>{job.house_no}</TableCell>
-                  <TableCell>{job.services}</TableCell>
-                  <TableCell>{job.due.toString()}</TableCell>
+                  <TableCell>{job.client_postcode}</TableCell>
+                  <TableCell>{job.client_house_num}</TableCell>
+                  {/* <TableCell>{job.services}</TableCell> */}
+                  <TableCell>{job.date_due.toString()}</TableCell>
                   <TableCell>
-                    <AssignedToMenu name={job.assigned_to} />
+                    <AssignedToMenu name={job.emp_id} />
                   </TableCell>
                   <TableCell>
                     {
                       <Chip
                         label={job.status}
                         color={
-                          job.status === "Completed"
+                          job.status === "COMPLETED"
                             ? "success"
-                            : job.status === "Pending"
+                            : job.status === "PENDING"
                             ? "warning"
                             : "error"
                         }
@@ -184,6 +102,6 @@ const JobsTable = () => {
       </TableContainer>
     </>
   );
-};
+}
 
 export default JobsTable;
