@@ -1,3 +1,4 @@
+"use client";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -9,13 +10,34 @@ import Chip from "@mui/material/Chip";
 import AdminBreadcrumbs from "./AdminBreadcrumbs";
 import ArrowDropDownCircleIcon from "@mui/icons-material/ArrowDropDownCircle";
 import { Box, Button, IconButton, Modal, Stack } from "@mui/material";
+import axios from "axios";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import EmployeeActiveJobs from "./EmployeeActiveJobs";
-
+interface Employee {
+  id: string;
+  employee_firstname: string;
+  employee_lastname: string;
+  employee_email: string;
+  employee_mobile: string;
+}
 const EmployeeTable = () => {
   const [showJobs, setShowJobs] = useState(false);
-  const allEmployees = [
+  const [allEmployees, setAllEmployees] = useState([]);
+  const fetchEmployees = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/api/employees");
+      console.log(response.data);
+      setAllEmployees(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchEmployees();
+  }, []);
+  const allEmployees2 = [
     {
       id: 1,
       firstname: "Banga",
@@ -135,16 +157,16 @@ const EmployeeTable = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {allEmployees.map((employee) => {
+            {allEmployees.map((employee: Employee) => {
               return (
-                <TableRow>
+                <TableRow key={employee.id}>
                   <TableCell>{employee.id}</TableCell>
-                  <TableCell>{employee.firstname}</TableCell>
-                  <TableCell>{employee.surname}</TableCell>
-                  <TableCell>{employee.email}</TableCell>
-                  <TableCell>{employee.mobile_no}</TableCell>
+                  <TableCell>{employee.employee_firstname}</TableCell>
+                  <TableCell>{employee.employee_lastname}</TableCell>
+                  <TableCell>{employee.employee_email}</TableCell>
+                  <TableCell>{employee.employee_mobile}</TableCell>
                   <TableCell>
-                    <EmployeeActiveJobs jobs={employee.jobs} />
+                    <EmployeeActiveJobs emp_id={employee.id} />
                   </TableCell>
                 </TableRow>
               );
