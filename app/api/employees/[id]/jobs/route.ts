@@ -12,7 +12,9 @@ export async function GET(
       emp_id: parseInt(id),
     },
     include: {
-      services: {},
+      services: {
+        select: { service: true },
+      },
     },
   });
 
