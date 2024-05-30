@@ -15,11 +15,11 @@ import {
   Chip,
 } from "@mui/material";
 import axios from "axios";
-interface Service {
-  connect: {
-    id: number;
-  };
-}
+// interface Service {
+//   connect: {
+//     id: number;
+//   };
+// }
 interface Job {
   id: string;
   client_firstname: string;
@@ -29,9 +29,7 @@ interface Job {
   client_house_num: string;
   client_mobile: string;
   date_due: string;
-  services: {
-    create: Service[];
-  };
+  services: Array<{ service: { id: number; name: string } }>;
   status: string;
 }
 type EmployeeActiveJobsProps = {
@@ -107,7 +105,30 @@ const EmployeeActiveJobs = (props: EmployeeActiveJobsProps) => {
                       <TableCell>{job.client_email}</TableCell>
                       <TableCell>{job.client_postcode}</TableCell>
                       <TableCell>{job.client_house_num}</TableCell>
-                      {/* <TableCell>{job.services}</TableCell> */}
+                      <TableCell>
+                        {job.services.map((service) => {
+                          return (
+                            <Chip
+                              key={service.service.id}
+                              label={service.service.name}
+                              variant="filled"
+                              color={
+                                service.service
+                                  ? service.service.id === 1 ||
+                                    service.service.id === 2
+                                    ? "info"
+                                    : service.service.id === 3 ||
+                                      service.service.id === 4
+                                    ? "success"
+                                    : "secondary"
+                                  : "default"
+                              }
+                              size="small"
+                              sx={{ fontSize: "0.7rem" }}
+                            />
+                          );
+                        })}
+                      </TableCell>
                       <TableCell>{job.date_due}</TableCell>
                       <TableCell>{job.client_mobile}</TableCell>
                       <TableCell>
