@@ -7,6 +7,11 @@ export async function GET() {
       assigned_to: {
         select: { employee_firstname: true, employee_lastname: true },
       },
+      services: {
+        select: {
+          service: true,
+        },
+      },
     },
   });
 
