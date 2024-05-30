@@ -23,11 +23,14 @@ interface Job {
   client_email: string;
   client_postcode: string;
   client_house_num: string;
+  client_mobile: string;
   assigned_to: {
     employee_firstname: string;
     employee_lastname: string;
   };
-  date_due: Date;
+  services: Array<{ service: { id: number; name: string } }>;
+
+  date_due: string;
   status: string;
 }
 
@@ -38,7 +41,7 @@ export function JobsTable() {
   const fetchJobs = async () => {
     try {
       const response = await axios.get("http://localhost:3000/api/jobs");
-      console.log(response);
+
       setAllJobs(response.data);
     } catch (err) {
       console.log(err);
@@ -48,6 +51,7 @@ export function JobsTable() {
   useEffect(() => {
     fetchJobs();
   }, []);
+
   return (
     <>
       <AdminBreadcrumbs />
@@ -60,7 +64,8 @@ export function JobsTable() {
               <TableCell>Client Email</TableCell>
               <TableCell>Postcode</TableCell>
               <TableCell>House No.</TableCell>
-              {/* <TableCell>Services</TableCell> */}
+              <TableCell>Mobile</TableCell>
+              <TableCell>Services</TableCell>
               <TableCell>Due</TableCell>
               <TableCell>Assigned to</TableCell>
               <TableCell>Status</TableCell>
@@ -69,6 +74,8 @@ export function JobsTable() {
           </TableHead>
           <TableBody>
             {allJobs.map((job: Job) => {
+              let jobDate = new Date(job.date_due);
+
               return (
                 <TableRow key={job.id}>
                   <TableCell>{job.id}</TableCell>
@@ -76,8 +83,32 @@ export function JobsTable() {
                   <TableCell>{job.client_email}</TableCell>
                   <TableCell>{job.client_postcode}</TableCell>
                   <TableCell>{job.client_house_num}</TableCell>
-                  {/* <TableCell>{job.services}</TableCell> */}
-                  <TableCell>{job.date_due.toString()}</TableCell>
+                  <TableCell>{job.client_mobile}</TableCell>
+                  <TableCell>
+                    {job.services.map((service) => {
+                      return (
+                        <Chip
+                          key={service.service.id}
+                          label={service.service.name}
+                          variant="filled"
+                          color={
+                            service.service
+                              ? service.service.id === 1 ||
+                                service.service.id === 2
+                                ? "info"
+                                : service.service.id === 3 ||
+                                  service.service.id === 4
+                                ? "success"
+                                : "secondary"
+                              : "default"
+                          }
+                          size="small"
+                          sx={{ fontSize: "0.7rem" }}
+                        />
+                      );
+                    })}
+                  </TableCell>
+                  <TableCell>{jobDate.toLocaleDateString()}</TableCell>
                   <TableCell>
                     <AssignedToMenu
                       employee_id={job.emp_id}
