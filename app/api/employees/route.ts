@@ -9,10 +9,9 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   const json = await request.json();
-
   const created = await prisma.employee.create({
     data: json,
   });
 
-  return NextResponse.json(employees);
+  return NextResponse.json(created);
 }
