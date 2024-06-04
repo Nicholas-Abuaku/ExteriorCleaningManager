@@ -26,7 +26,9 @@ const EmployeeTable = () => {
   const [allEmployees, setAllEmployees] = useState([]);
   const fetchEmployees = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/employees");
+      const response = await axios.get(
+        "https://exterior-cleaning-manager-4862.vercel.app/api/employees"
+      );
       console.log(response.data);
       setAllEmployees(response.data);
     } catch (err) {
