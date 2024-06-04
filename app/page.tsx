@@ -28,7 +28,7 @@ export default function Home() {
           </Grid>
         </Grid>
         <Grid item xs={12}>
-          <HomePageFeatures />
+          {/* <HomePageFeatures /> */}
         </Grid>
       </ThemeProvider>
     </main>
