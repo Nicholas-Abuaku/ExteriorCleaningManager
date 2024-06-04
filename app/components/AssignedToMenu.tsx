@@ -68,7 +68,7 @@ const AssignedToMenu = (props: AssignedToMenuProps) => {
 
   const fetchAllEmployees = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/employees");
+      const response = await axios.get("api/employees");
 
       setAllEmployees(response.data);
     } catch (err) {
