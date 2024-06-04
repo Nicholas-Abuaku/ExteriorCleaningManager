@@ -1,9 +1,18 @@
 import { Box, Typography, Stack, Button } from "@mui/material";
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
+import WindowCleaner from "../assets/cleaning.jpg";
 const HeroSection = () => {
   return (
-    <Box sx={{ display: "flex", justifyContent: "center", marginTop: "150px" }}>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        marginTop: "150px",
+        alignItems: "center",
+      }}
+    >
       <Box sx={{ width: "23.4375vw" }}>
         <Typography variant="h1">
           Streamline Your Exterior Cleaning Business
@@ -28,9 +37,13 @@ const HeroSection = () => {
         </Stack>
       </Box>
       <Box marginLeft={"40px"}>
-        <img
-          src="https://media.istockphoto.com/id/162353089/photo/window-cleaning.jpg?s=612x612&w=0&k=20&c=HUXLEt9RI6Jr3ZxVU54K-k6rvcCIZZrPww7pUi2ow9g="
-          style={{ borderRadius: "10px" }}
+        <Image
+          src={WindowCleaner.src}
+          alt="blah"
+          width={612}
+          height={408}
+          sizes="612px"
+          style={{ borderRadius: "5px" }}
         />
       </Box>
     </Box>
