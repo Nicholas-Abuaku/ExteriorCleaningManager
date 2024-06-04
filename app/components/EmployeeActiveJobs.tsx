@@ -44,9 +44,7 @@ const EmployeeActiveJobs = (props: EmployeeActiveJobsProps) => {
 
   const fetchEmployeeJobs = async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:3000/api/employees/" + emp_id + "/jobs"
-      );
+      const response = await axios.get("/api/employees/" + emp_id + "/jobs");
       console.log(response.data);
       setJobs(response.data);
     } catch (err) {
