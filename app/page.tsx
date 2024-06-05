@@ -1,13 +1,6 @@
 "use client";
 import Image from "next/image";
-import {
-  ThemeProvider,
-  Typography,
-  Box,
-  Button,
-  Stack,
-  Grid,
-} from "@mui/material";
+import { ThemeProvider, Grid } from "@mui/material";
 import { theme } from "./theme/theme";
 import HeroSection from "./components/HeroSection";
 import HomePageFeatures from "./components/HomePageFeatures";
